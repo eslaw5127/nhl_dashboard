@@ -1,0 +1,65 @@
+.team-container {
+    background-color: white; /* Light background */
+    color: #333;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+  }
+
+  .record {
+    background-color: #006847; /* Victory Green */
+    min-height: 50vh;
+    color: white;
+    padding: 10px;
+    border-bottom: 2px solid #333; /* Black border */
+    text-align: left;
+  }
+
+  .App-header {
+    background-color: #282c34;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+  }
+  .App-header {
+    margin-top: 5px;
+    background-color: #006847; /* Victory Green */
+    color: white;
+    padding: 0px;
+    border-bottom: 2px solid #333; /* Black border */
+    
+  }
+  
+  .team-info h1 {
+    margin: 0;
+  }
+
+  .header {
+    display: flex;
+    align-items: center; /* Vertically align items */
+    margin-bottom: 7px;
+  }
+  
+  .team-logo {
+    height: 100px; /* Adjust the size as needed */
+    margin-right: 5px; /* Space between the logo and the heading */
+  }
+  
+  h2 {
+    color: #006847; /* Victory Green for the heading */
+    margin: 0;
+  }
+  
+
+  footer {
+    background-color: #006847; /* Victory Green */
+    color: white;
+    padding: 10px;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+  }

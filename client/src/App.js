@@ -3,7 +3,8 @@ import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import Team from './Team';
 import Player from './Player';
 import Compare from './Compare';
-import './App.css';  // Import the CSS file for styling
+import './App.css';  
+import starsLogo from './assets/dallas_stars_logo.png';
 
 function App() {
   const [data, setData] = useState(null);
@@ -37,10 +38,7 @@ function App() {
           <Route path="/compare" element={<Compare />} />
         </Routes>
 
-        <header className="App-header">
-          <h1>React and Python Web App</h1>
-          {data ? <p>{data.message}</p> : <p>Loading...</p>}
-        </header>
+        
       </div>
     </Router>
   );

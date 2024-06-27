@@ -28,18 +28,12 @@
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
 
 body {
   margin: 0;
   font-family: Arial, sans-serif;
+  background-color: #f4f4f4; /* Light background for contrast */
+  color: #333;
 }
 
 .App {
@@ -47,7 +41,7 @@ body {
 }
 
 .navbar {
-  background-color: #333;
+  background-color: #006847; /* Victory Green */
   overflow: hidden;
 }
 
@@ -72,10 +66,31 @@ body {
 }
 
 .nav-links a:hover {
-  background-color: #ddd;
-  color: black;
+  background-color: #333; /* Dark background on hover */
+  color: #006847; /* Victory Green on hover */
 }
 
 .App-header {
   margin-top: 20px;
+  background-color: #006847; /* Victory Green */
+  color: white;
+  padding: 20px;
+  border-bottom: 5px solid #333; /* Black border */
+}
+
+h2 {
+  color: #006847; /* Victory Green for headings */
+}
+
+p {
+  color: #333; /* Standard text color */
+}
+
+footer {
+  background-color: #006847; /* Victory Green */
+  color: white;
+  padding: 10px;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
 }
