@@ -69,12 +69,13 @@ function Team() {
   const [checkedRows, setCheckedRows] = useState([]);
   const [response, setResponse] = useState('');
   const [teamData, setTeamData] = useState([]);
+  const [data, setData] = useState([]);
   const apiRef = React.useRef(null);
 
   useEffect(() => {
-    axios.get('/api/team-data')
+    axios.get('/api/western')
       .then(response => {
-        setTeamData(response.data);
+        setData(response.data);
       })
       .catch(error => console.error('Error fetching team data:', error));
   }, []);
@@ -92,13 +93,41 @@ function Team() {
 
   };
 
+  const handleWestern =  async () => {
+    axios.get('/api/western')
+      .then(response => {
+        setData(response.data);
+      })
+  };
+
+  const handlePacific =  async () => {
+    axios.get('/api/pacific')
+      .then(response => {
+        setData(response.data);
+      })
+  };
+
+  const handleAtlantic =  async () => {
+    axios.get('/api/atlantic')
+      .then(response => {
+        setData(response.data);
+      })
+  };
+
+  const handleMetro =  async () => {
+    axios.get('/api/metro')
+      .then(response => {
+        setData(response.data);
+      })
+  };
+
   return (
     <div className="team-container">
       <div className="header">
         <img src={starsLogo} className="team-logo" alt="Dallas Stars Logo" />
         <h2>DALLAS STARS HOCKEY</h2>
       </div>
-      <p>All information about the team can be found on this page. League comparisons may be done by pressing the "Compare to NHL Averages" button.</p>
+      <p>All information about the team can be found on this page.</p>
       <div className="record">
         <h3>Current Record: 52-21-9</h3>
         <h3>Points: 113</h3>
@@ -107,7 +136,11 @@ function Team() {
         <h3>Goals For: 298 (3rd of 32)</h3>
         <h3>Goals Against: 234 (8th of 32)</h3>
       </div>
-      <WesternDivision />
+      <button onClick = {handleWestern}>Central Division</button>
+      <button onClick = {handlePacific}>Pacific Division</button>
+      <button onClick = {handleMetro}>Metropolitan Division</button>
+      <button onClick = {handleAtlantic}>Atlantic Division</button>
+      <WesternDivision rows={data}/>
       <div>
         <DataGrid
           rows={tempData}
