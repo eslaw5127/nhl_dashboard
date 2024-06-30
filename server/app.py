@@ -80,5 +80,33 @@ def get_team_data():
 
     return team_data_json
 
+@app.route('/api/player/<name>', methods=['GET'])
+def get_player(name):
+    csv_file = 'player_data_regular.csv'  # Replace with your player data CSV file
+    player_data = None
+    with open(csv_file, mode='r') as file:
+        reader = csv.reader(file)
+        headers = next(reader)
+        for row in reader:
+            if row[1].lower() == name.lower():
+                player_data = {
+                    "name": row[1],
+                    "age": int(row[2]),
+                    "position": row[3],
+                    "gp": int(row[4]),
+                    "g": int(row[5]),
+                    "a": int(row[6]),
+                    "pts": int(row[7]),
+                    "plus_minus": int(row[8]),
+                    "pim": int(row[9]),
+                    # Add more fields as needed
+                }
+                break
+
+    if player_data:
+        return jsonify(player_data)
+    else:
+        return jsonify({"error": "Player not found"}), 404
+
 if __name__ == '__main__':
     app.run(debug=True)

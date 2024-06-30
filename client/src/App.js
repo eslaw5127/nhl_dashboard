@@ -4,6 +4,7 @@ import Team from './Team';
 import Player from './Player';
 import Compare from './Compare';
 import './App.css';  
+import PlayerDetail from './PlayerDetail';
 import starsLogo from './assets/dallas_stars_logo.png';
 
 function App() {
@@ -40,6 +41,9 @@ function App() {
 
         
       </div>
+      <Routes>
+        <Route path="/player/:name" element={<PlayerDetail />} />
+      </Routes>
     </Router>
   );
 }

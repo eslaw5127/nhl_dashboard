@@ -25,46 +25,6 @@ import {
 import { DataGrid, GridToolbar } from '@mui/x-data-grid';
 import axios from 'axios';
 
-const tempData = [
-  {
-    id: 1,
-    ESINumber: '12345',
-    IntegrationName: 'Integration 1',
-    SINumber: 'SIN123',
-    IntegrationPattern: 'Pattern 1',
-    IntegrationPlatform: 'Platform A',
-    PrimarySourceSystem: 'Source A',
-    PrimaryTargetSystem: 'Target A',
-    SourceProtocol: 'HTTP',
-    TargetProtocol: 'HTTPS',
-    Region: 'NA',
-    Division: 'Div A',
-    PRJ: 'PRJ001',
-    CHG: 'CHG001',
-    MajorProgram: 'Program 1',
-    DocURL: 'http://example.com/doc1'
-  },
-  {
-    id: 2,
-    ESINumber: '67890',
-    IntegrationName: 'Integration 2',
-    SINumber: 'SIN456',
-    IntegrationPattern: 'Pattern 2',
-    IntegrationPlatform: 'Platform B',
-    PrimarySourceSystem: 'Source B',
-    PrimaryTargetSystem: 'Target B',
-    SourceProtocol: 'FTP',
-    TargetProtocol: 'SFTP',
-    Region: 'EU',
-    Division: 'Div B',
-    PRJ: 'PRJ002',
-    CHG: 'CHG002',
-    MajorProgram: 'Program 2',
-    DocURL: 'http://example.com/doc2'
-  }
-  // Add more sample rows as needed
-];
-
 function Team() {
   const [checkedRows, setCheckedRows] = useState([]);
   const [response, setResponse] = useState('');
@@ -141,28 +101,6 @@ function Team() {
       <button onClick = {handleMetro}>Metropolitan Division</button>
       <button onClick = {handleAtlantic}>Atlantic Division</button>
       <WesternDivision rows={data}/>
-      <div>
-        <DataGrid
-          rows={tempData}
-          columns={dataGridCols}
-          initialState={{
-            pagination: {
-              paginationModel: {
-                pageSize: 15,
-              },
-            },
-          }}
-          pageSizeOptions={[15]}
-          getRowId={(row) => row.id}
-          checkboxSelection
-          keepNonExistentRowsSelected
-          slots={{ toolbar: GridToolbar }}
-          apiRef={apiRef}
-        />
-      </div>
-      <div>
-        <button onClick = {handleShowSelected}>Show Selected Rows</button>
-      </div>
     </div>
   );
 }
