@@ -99,7 +99,27 @@ def get_player(name):
                     "pts": int(row[7]),
                     "plus_minus": int(row[8]),
                     "pim": int(row[9]),
-                    # Add more fields as needed
+                    # Add more fields as neededEV,PP,SH,GW,EV,PP,SH,S,S%,TOI,ATOI,OPS,DPS,PS,BLK,HIT,FOW,FOL,FO%
+                    "ev" : int(row[10]),
+                    "pp" : int(row[11]),
+                    "sh": int(row[12]),
+                    "gw" : int(row[13]),
+                    "eva" : int(row[14]),
+                    "ppa" : int(row[15]),
+                    "sha" : int(row[16]),
+                    "s" : int(row[17]),
+                    "sper" : float(row[18]),
+                    "toi" : int(row[19]),
+                    "atoi" : row[20],
+                    "ops" : float(row[21]),
+                    "dps" : float(row[22]),
+                    "ps" : float(row[23]),
+                    "blk" : int(row[24]),
+                    "hit" : int(row[25]),
+                    "fow" : int(row[26]),
+                    "fol" : int(row[27]),
+                    "foper" : row[28],
+
                 }
                 break
 
@@ -107,6 +127,47 @@ def get_player(name):
         return jsonify(player_data)
     else:
         return jsonify({"error": "Player not found"}), 404
+
+@app.route('/api/player_post/<name>', methods=['GET'])
+def get_player_post(name):
+    csv_file = 'player_data_post.csv'  # Replace with your player data CSV file
+    player_data = None
+    with open(csv_file, mode='r') as file:
+        reader = csv.reader(file)
+        headers = next(reader)
+        for row in reader:
+            if row[1].lower() == name.lower():
+                player_data = {
+                    "name": row[1],
+                    "age": int(row[2]),
+                    "position": row[3],
+                    "gp": int(row[4]),
+                    "g": int(row[5]),
+                    "a": int(row[6]),
+                    "pts": int(row[7]),
+                    "plus_minus": int(row[8]),
+                    "pim": int(row[9]),
+                    # Add more fields as neededEV,PP,SH,GW,EV,PP,SH,S,S%,TOI,ATOI,OPS,DPS,PS,BLK,HIT,FOW,FOL,FO%
+                    "ev" : int(row[10]),
+                    "pp" : int(row[11]),
+                    "sh": int(row[12]),
+                    "gw" : int(row[13]),
+                    "eva" : int(row[14]),
+                    "ppa" : int(row[15]),
+                    "sha" : int(row[16]),
+                    "s" : int(row[17]),
+                    "sper" : float(row[18]),
+                    "toi" : int(row[19]),
+                    "atoi" : row[20],
+
+                }
+                break
+
+    if player_data:
+        return jsonify(player_data)
+    else:
+        return jsonify({"error": "Player not found"}), 404
+
 
 if __name__ == '__main__':
     app.run(debug=True)
