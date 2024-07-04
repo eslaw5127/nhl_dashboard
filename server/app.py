@@ -66,23 +66,22 @@ def get_atlantic():
 def get_data():
     return jsonify({"message": "Hello from the back end!"})
 
+#Get the team data for the 2023-2024 season
 @app.route('/api/team-data')
 def get_team_data():
-    # Assuming Team.csv is in the same directory as app.py
     csv_path = 'team_data.csv'
     
-    # Read CSV file into pandas DataFrame
     df = pd.read_csv(csv_path)
     
-    # Convert DataFrame to JSON format
     team_data_json = df.to_json(orient='records')
     print(team_data_json)
 
     return team_data_json
 
+#Get the players data for the regular season
 @app.route('/api/player/<name>', methods=['GET'])
 def get_player(name):
-    csv_file = 'player_data_regular.csv'  # Replace with your player data CSV file
+    csv_file = 'player_data_regular.csv' 
     player_data = None
     with open(csv_file, mode='r') as file:
         reader = csv.reader(file)
@@ -99,7 +98,6 @@ def get_player(name):
                     "pts": int(row[7]),
                     "plus_minus": int(row[8]),
                     "pim": int(row[9]),
-                    # Add more fields as neededEV,PP,SH,GW,EV,PP,SH,S,S%,TOI,ATOI,OPS,DPS,PS,BLK,HIT,FOW,FOL,FO%
                     "ev" : int(row[10]),
                     "pp" : int(row[11]),
                     "sh": int(row[12]),
@@ -128,9 +126,10 @@ def get_player(name):
     else:
         return jsonify({"error": "Player not found"}), 404
 
+#Get the data for the player in the post season
 @app.route('/api/player_post/<name>', methods=['GET'])
 def get_player_post(name):
-    csv_file = 'player_data_post.csv'  # Replace with your player data CSV file
+    csv_file = 'player_data_post.csv' 
     player_data = None
     with open(csv_file, mode='r') as file:
         reader = csv.reader(file)
@@ -147,7 +146,6 @@ def get_player_post(name):
                     "pts": int(row[7]),
                     "plus_minus": int(row[8]),
                     "pim": int(row[9]),
-                    # Add more fields as neededEV,PP,SH,GW,EV,PP,SH,S,S%,TOI,ATOI,OPS,DPS,PS,BLK,HIT,FOW,FOL,FO%
                     "ev" : int(row[10]),
                     "pp" : int(row[11]),
                     "sh": int(row[12]),

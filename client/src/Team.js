@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import starsLogo from './assets/dallas_stars_logo.png';
 import './Team.css';
-import dataGridCols from './Team_Table.js';
 import WesternDivision from './western_div.js'
 
 import {
